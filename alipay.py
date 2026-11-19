@@ -2,6 +2,7 @@
 """获取 Zepp Life 的支付宝授权入口并查询绑定状态。"""
 
 import uuid
+from getpass import getpass
 from urllib.parse import urlparse
 import requests
 
@@ -95,7 +96,7 @@ class AlipayBinding:
 
 if __name__ == "__main__":
     account = input("Zepp 账号：").strip()
-    password = input("Zepp 密码：")
+    password = getpass("Zepp 密码：")
     token, user_id = login_for_token(account, password)
     client = AlipayBinding(token, user_id)
     print("支付宝状态：", "已绑定" if client.status()["bound"] else "未绑定")

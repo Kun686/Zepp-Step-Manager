@@ -5,6 +5,7 @@ import re
 import time
 import uuid
 import urllib.parse
+from getpass import getpass
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -124,7 +125,7 @@ def submit_steps(step, app_token, user_id, device_id):
 def main():
     print("Zepp Life 步数提交")
     account = input("小米运动账号（手机号或邮箱）：").strip()
-    password = input("密码：")
+    password = getpass("密码：")
     try:
         step = int(input("要提交的步数：").strip())
     except ValueError:
